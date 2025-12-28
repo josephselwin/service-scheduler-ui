@@ -112,7 +112,7 @@ const ScheduleView = () => {
                                 {new Date(apt.StartDateTime).toLocaleString()}
                             </div>
                             <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
-                                Service ID: {apt.ServiceId} • Customer ID: {apt.CustomerId}
+                                Service: {apt.ServiceName || apt.ServiceId} • Customer: {apt.CustomerName || apt.CustomerId}
                             </div>
                             <div style={{ marginBottom: '0.5rem' }}>
                                 <span style={{
