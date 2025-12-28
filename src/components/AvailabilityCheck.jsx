@@ -85,12 +85,12 @@ const AvailabilityCheck = () => {
             {error && <div style={{ color: 'var(--danger)', padding: '1rem', background: '#fee2e2', borderRadius: '8px', textAlign: 'center' }}>{error}</div>}
 
             {result && (
-                <div style={{ padding: '1.5rem', background: result.IsAvailable ? '#dcfce7' : '#fee2e2', borderRadius: '12px', textAlign: 'center' }}>
-                    <h3 style={{ margin: '0 0 0.5rem 0', color: result.IsAvailable ? 'var(--success)' : 'var(--danger)' }}>
-                        {result.IsAvailable ? 'Available' : 'Not Available'}
+                <div style={{ padding: '1.5rem', background: !result.IsAvailable ? '#dcfce7' : '#fee2e2', borderRadius: '12px', textAlign: 'center' }}>
+                    <h3 style={{ margin: '0 0 0.5rem 0', color: !result.IsAvailable ? 'var(--success)' : 'var(--danger)' }}>
+                        {!result.IsAvailable ? 'Available' : 'Not Available'}
                     </h3>
                     <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
-                        {result.Message || (result.IsAvailable ? 'The professional is free at this time.' : 'The professional has conflicts.')}
+                        {result.Message || (!result.IsAvailable ? 'The professional is free at this time.' : 'The professional has conflicts.')}
                     </p>
                 </div>
             )}
