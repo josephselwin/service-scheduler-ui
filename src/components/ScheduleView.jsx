@@ -37,7 +37,7 @@ const ScheduleView = () => {
             await serviceSchedulerApi.updateAppointmentStatus(id, newStatus);
             // Refresh list locally
             setAppointments(prev => prev.map(apt =>
-                apt.Id === id ? { ...apt, Status: newStatus } : apt
+                apt.AppointmentId === id ? { ...apt, Status: newStatus } : apt
             ));
         } catch (err) {
             alert('Failed to update status: ' + (err.response?.data?.message || err.message));
@@ -49,7 +49,7 @@ const ScheduleView = () => {
         try {
             await serviceSchedulerApi.cancelAppointment(id);
             // Remove from list or mark simplified
-            setAppointments(prev => prev.filter(apt => apt.Id !== id));
+            setAppointments(prev => prev.filter(apt => apt.AppointmentId !== id));
         } catch (err) {
             alert('Failed to cancel appointment: ' + (err.response?.data?.message || err.message));
         }
@@ -106,7 +106,7 @@ const ScheduleView = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {appointments.map(apt => (
-                    <div key={apt.Id} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div key={apt.AppointmentId} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
                         <div>
                             <div style={{ fontWeight: '600', fontSize: '1.1rem', marginBottom: '0.25rem' }}>
                                 {new Date(apt.StartDateTime).toLocaleString()}
@@ -135,13 +135,13 @@ const ScheduleView = () => {
                                 className="form-input"
                                 style={{ width: 'auto', padding: '0.4rem' }}
                                 value={apt.Status || ''}
-                                onChange={(e) => handleStatusUpdate(apt.Id, e.target.value)}
+                                onChange={(e) => handleStatusUpdate(apt.AppointmentId, e.target.value)}
                             >
                                 <option value="">Actions...</option>
                                 <option value="InProgress">In Progress</option>
                                 <option value="Completed">Completed</option>
                             </select>
-                            <button onClick={() => handleCancel(apt.Id)} className="btn btn-danger" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
+                            <button onClick={() => handleCancel(apt.AppointmentId)} className="btn btn-danger" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
                                 Cancel
                             </button>
                         </div>
