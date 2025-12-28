@@ -138,9 +138,8 @@ const ScheduleView = () => {
                                 onChange={(e) => handleStatusUpdate(apt.Id, e.target.value)}
                             >
                                 <option value="">Actions...</option>
-                                <option value="Confirmed">Confirm</option>
-                                <option value="Completed">Complete</option>
-                                <option value="NoShow">No Show</option>
+                                <option value="InProgress">In Progress</option>
+                                <option value="Completed">Completed</option>
                             </select>
                             <button onClick={() => handleCancel(apt.Id)} className="btn btn-danger" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
                                 Cancel
