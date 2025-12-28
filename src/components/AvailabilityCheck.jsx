@@ -24,8 +24,8 @@ const AvailabilityCheck = () => {
         try {
             const response = await serviceSchedulerApi.checkAvailability(
                 formData.professionalId,
-                formData.start,
-                formData.end
+                `${formData.start}T00:00:00`,
+                `${formData.end}T23:59:59`
             );
             setResult(response.data);
         } catch (err) {
@@ -54,9 +54,9 @@ const AvailabilityCheck = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <div className="form-group">
-                        <label className="form-label">Start Time</label>
+                        <label className="form-label">Start Date</label>
                         <input
-                            type="datetime-local"
+                            type="date"
                             name="start"
                             className="form-input"
                             value={formData.start}
@@ -65,9 +65,9 @@ const AvailabilityCheck = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label className="form-label">End Time</label>
+                        <label className="form-label">End Date</label>
                         <input
-                            type="datetime-local"
+                            type="date"
                             name="end"
                             className="form-input"
                             value={formData.end}
