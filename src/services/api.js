@@ -27,7 +27,7 @@ export const serviceSchedulerApi = {
 
     // 4. Check Availability
     checkAvailability: async (professionalId, start, end) => {
-        return api.get('/api/availability/check', {
+        return api.get('/api/availability', {
             params: { professionalId, start, end }
         });
     },
