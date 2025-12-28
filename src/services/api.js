@@ -17,7 +17,7 @@ export const serviceSchedulerApi = {
 
     // 2. Update Appointment Status
     updateAppointmentStatus: async (id, status) => {
-        return api.put(`/api/appointments/${id}/status`, { status });
+        return api.patch(`/api/appointments/${id}/status`, { status });
     },
 
     // 3. Cancel Appointment
