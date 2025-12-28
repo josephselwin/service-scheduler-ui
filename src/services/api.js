@@ -22,7 +22,7 @@ export const serviceSchedulerApi = {
 
     // 3. Cancel Appointment
     cancelAppointment: async (id) => {
-        return api.delete(`/api/appointments/${id}`);
+        return api.post(`/api/appointments/${id}/cancel`);
     },
 
     // 4. Check Availability
