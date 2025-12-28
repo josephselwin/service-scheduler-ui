@@ -21,8 +21,8 @@ const ScheduleView = () => {
         try {
             const response = await serviceSchedulerApi.getProfessionalSchedule(
                 filter.professionalId,
-                filter.from,
-                filter.to
+                `${filter.from}T00:00:00`,
+                `${filter.to}T23:59:59`
             );
             setAppointments(response.data);
         } catch (err) {
@@ -71,9 +71,9 @@ const ScheduleView = () => {
                         />
                     </div>
                     <div className="form-group" style={{ marginBottom: 0 }}>
-                        <label className="form-label">From</label>
+                        <label className="form-label">From Date</label>
                         <input
-                            type="datetime-local"
+                            type="date"
                             className="form-input"
                             value={filter.from}
                             onChange={e => setFilter({ ...filter, from: e.target.value })}
@@ -81,9 +81,9 @@ const ScheduleView = () => {
                         />
                     </div>
                     <div className="form-group" style={{ marginBottom: 0 }}>
-                        <label className="form-label">To</label>
+                        <label className="form-label">To Date</label>
                         <input
-                            type="datetime-local"
+                            type="date"
                             className="form-input"
                             value={filter.to}
                             onChange={e => setFilter({ ...filter, to: e.target.value })}
